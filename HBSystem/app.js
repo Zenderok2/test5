@@ -36,7 +36,8 @@ createApp({
                         { type: 'Эконом', price: 4000 }
                     ]
                 }
-            ]
+            ],
+            slideDirection: 'slide-left' // Направление анимации по умолчанию
         };
     },
     methods: {
@@ -61,6 +62,11 @@ createApp({
             if (this.currentHotelIndex < this.hotels.length - 1) {
                 this.currentHotelIndex++;
             }
+        }
+    },
+    watch: {
+        currentHotelIndex(newIndex, oldIndex) {
+            this.slideDirection = newIndex > oldIndex ? 'slide-left' : 'slide-right';
         }
     }
 }).mount('body');
